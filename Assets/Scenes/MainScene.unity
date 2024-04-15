@@ -972,8 +972,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1568205242}
-        m_TargetAssemblyTypeName: RewardedButton, Assembly-CSharp
-        m_MethodName: ShowAd
+        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -992,11 +992,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568205236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd91966e3cb70143bcd0f166e2a13b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 033e691e2a301114f836eec1a9505962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidAdUnitId: Rewarded_Android
-  _iOSAdUnitId: Rewarded_iOS
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
