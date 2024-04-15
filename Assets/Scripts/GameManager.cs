@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
     public Text nameTxt;
+    public Text countTxt;
     public Text scoreTxt;
-    public GameObject endTxt;
-    public GameObject resultTxt;
+    public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public int cardCount = 0;
     float time = 0.0f;
+    int count = 0;
     int score = 0;
 
     private void Awake()
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        endPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        score++;
+        count++;
 
         if (firstCard.idx == secondCard.idx)
         {
@@ -76,10 +78,15 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        scoreTxt.text = score.ToString() + "번";
         Time.timeScale = 0.0f;
-        endTxt.SetActive(true);
-        resultTxt.SetActive(true);
+
+        // 점수 = 2 * (16 - 남은 카드) + 남은 시간 - (매칭 시도한 횟수 / 5)
+        score = 2 * (16 - cardCount) + (30 - (int)time) - count / 5; 
+
+        countTxt.text = count.ToString() + "번";
+        scoreTxt.text = score.ToString() + "점";
+
+        endPanel.SetActive(true);
     }
 
     void FailMatch()
