@@ -76,9 +76,9 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
+        scoreTxt.text = score.ToString() + "¹ø";
         Time.timeScale = 0.0f;
         endTxt.SetActive(true);
-        scoreTxt.text = score.ToString() + "¹ø";
         resultTxt.SetActive(true);
     }
 
