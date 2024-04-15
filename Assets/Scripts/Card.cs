@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int idx = 0;
+    public string nickname = "°¡³ª´Ù";
 
     public GameObject front;
     public GameObject back;
@@ -31,6 +32,26 @@ public class Card : MonoBehaviour
     public void Setting(int number)
     {
         idx = number;
+        switch(idx / 2)
+        {
+            case 0:
+                nickname = "±èµµÇö";
+                break;
+            case 1:
+                nickname = "ÇÑÀçºó";
+                break;
+            case 2:
+                nickname = "ÃÖ¹Î¼®";
+                break;
+            case 3:
+                nickname = "ÀÌ¹Ì¿µ";
+                break;
+            case 4:
+                nickname = "Ãµ¿ìÇõ";
+                break;
+            default:
+                break;
+        }
         frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
     }
 
