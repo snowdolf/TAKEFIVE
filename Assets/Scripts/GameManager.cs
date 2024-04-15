@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (time >= 10.0f) EndGame();
+        if (time >= 30.0f) EndGame();
     }
 
     public void Matched()
