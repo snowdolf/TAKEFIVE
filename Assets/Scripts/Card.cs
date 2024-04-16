@@ -61,8 +61,7 @@ public class Card : MonoBehaviour
 
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
+        Invoke("OpenCardInvoke", 0.1f);
 
         if (GameManager.Instance.firstCard == null)
         {
@@ -73,6 +72,12 @@ public class Card : MonoBehaviour
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
+    }
+
+    public void OpenCardInvoke()
+    {
+        front.SetActive(true);
+        back.SetActive(false);
     }
 
     public void DestroyCard()

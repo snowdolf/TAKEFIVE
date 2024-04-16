@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Text nameTxt;
     public Text countTxt;
     public Text scoreTxt;
+    public GameObject board;
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        board.SetActive(true);
         endPanel.SetActive(false);
     }
 
@@ -86,6 +88,7 @@ public class GameManager : MonoBehaviour
         countTxt.text = count.ToString() + "¹ø";
         scoreTxt.text = score.ToString() + "Á¡";
 
+        board.SetActive(false);
         endPanel.SetActive(true);
     }
 
