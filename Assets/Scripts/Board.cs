@@ -11,8 +11,7 @@ public class Board : MonoBehaviour
     public GameObject card3;
 
     // lv1 = 4 * 4 -> 8개. lv2 = 5 * 4 -> 10개. lv2 = 6 * 6 -> 18개
-    int level = 2;
-    int length = 4;
+    int stage = 1;
     int xLength = 4;
     int yLength = 4;
     float distance = 1.4f;
@@ -27,27 +26,27 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(level == 1)
+        stage = GameManager.stage;
+
+        if(stage == 1)
         {
             // card1의 scale = 1.3f
             card = card1;
         }
-        else if (level == 2)
+        else if (stage == 2)
         {
             // card2의 scale = 1.15f
             card = card2;
-            length = 8;
             yLength = 5;
             distance = 1.25f;
             positionX = -1.87f;
             positionY = -3.75f;
             frontScale = 0.8f;
         }
-        else if (level == 3)
+        else if (stage == 3)
         {
             // card3의 scale = 0.85f
             card = card3;
-            length = 6;
             xLength = 6; yLength = 6;
             distance = 0.95f;
             positionX = -2.37f;
