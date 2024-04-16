@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
 
     }
 
-    public void Setting(int number)
+    public void Setting(int number, float frontScale)
     {
         idx = number;
         switch(idx / 2)
@@ -53,6 +53,7 @@ public class Card : MonoBehaviour
                 break;
         }
         frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        front.transform.localScale = new Vector3(frontScale, frontScale, 1f);
     }
 
     public void OpenCard()

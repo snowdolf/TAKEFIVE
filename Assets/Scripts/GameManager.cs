@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
 
     public int cardCount = 0;
+    public int cardNum = 0;
     float time = 0.0f;
     int count = 0;
     int score = 0;
@@ -82,8 +83,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
 
-        // 점수 = 2 * (16 - 남은 카드) + 남은 시간 - (매칭 시도한 횟수 / 5)
-        score = 2 * (16 - cardCount) + (30 - (int)time) - count / 5; 
+        // 점수 = 2 * 맞춘 카드 + 남은 시간 - (매칭 시도한 횟수 / 5)
+        score = 2 * (cardNum - cardCount) + (30 - (int)time) - count / 5; 
 
         countTxt.text = count.ToString() + "번";
         scoreTxt.text = score.ToString() + "점";
