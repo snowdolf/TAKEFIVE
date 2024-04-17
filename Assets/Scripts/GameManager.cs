@@ -65,7 +65,14 @@ public class GameManager : MonoBehaviour
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
-            if (cardCount == 0) EndGame();
+            if (cardCount == 0)
+            {
+                if(StageManager.Instance.stage < 3)
+                {
+                    StageManager.Instance.stageUnLocked[StageManager.Instance.stage + 1] = true;
+                }
+                EndGame();
+            }
             else SuccessMatch();
         }
         else
