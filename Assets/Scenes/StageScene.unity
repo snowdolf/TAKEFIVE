@@ -262,7 +262,6 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: c8d87733985296b4e89e73d7641ba775, type: 3}
   cardCount: 0
   cardNum: 0
-  stage: 1
 --- !u!4 &155359729
 Transform:
   m_ObjectHideFlags: 0
