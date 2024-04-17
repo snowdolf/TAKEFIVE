@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Text countTxt;
     public Text scoreTxt;
     public GameObject board;
+    //public GameObject namePlate_Success; //우혁 : 마지막쯤 메인씬 수정할 때 주석 해제할 부분 namePlate 관련 코드
+    //public GameObject namePlate_Failed; //1000
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -43,7 +45,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1.0f;
@@ -52,7 +53,6 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
-            audioSource.PlayOneShot(clip1); ;
+            audioSource.PlayOneShot(clip1);
 }
 
         firstCard = null;
@@ -132,24 +132,28 @@ public class GameManager : MonoBehaviour
 
     void FailMatch()
     {
+        //namePlate_Failed.SetActive(true); //1000
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.5f);
+        Invoke("FailMatchInvoke", 0.8f);
     }
 
     void FailMatchInvoke()
     {
+        //namePlate_Failed.SetActive(false);  //1000 
         failTxt.SetActive(false);
     }
 
     void SuccessMatch()
     {
+        //namePlate_Success.SetActive(true); //1000
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.5f);
+        Invoke("SuccessMatchInvoke", 0.8f);
     }
 
     void SuccessMatchInvoke()
     {
+        //namePlate_Success.SetActive(false); //1000
         successTxt.SetActive(false);
     }
 }
