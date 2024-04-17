@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4c77cfbc32ea348aa3408a856566ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 680524202}
 --- !u!1 &763472371
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 1
+  stageUnLocked: 010000
 --- !u!1 &1569219478
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4921cf703c69414479b908f774509132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1569219482}
 --- !u!1 &1592401462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,6 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6415d0928f8a444fb28aba6af7cd0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 2106904568}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
