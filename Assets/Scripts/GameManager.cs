@@ -15,14 +15,13 @@ public class GameManager : MonoBehaviour
     public Text countTxt;
     public Text scoreTxt;
     public GameObject board;
-    public GameObject namePanel;
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
 
     AudioSource audioSource;
     public AudioClip clip;
-    public AudioClip failSound;
+    public AudioClip clip1;
 
 
     // 5초 카운트 변수 저장 및 Text 컴포넌트
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour
         if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
-            
+
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
@@ -102,11 +101,12 @@ public class GameManager : MonoBehaviour
             else SuccessMatch();
         }
         else
-        {            
+        {
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
-        }
+            audioSource.PlayOneShot(clip1); ;
+}
 
         firstCard = null;
         secondCard = null;
@@ -127,35 +127,29 @@ public class GameManager : MonoBehaviour
         scoreTxt.text = score.ToString() + "점";
 
         board.SetActive(false);
-        namePanel.SetActive(false);
         endPanel.SetActive(true);
     }
 
     void FailMatch()
     {
-        namePanel.SetActive(true);
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.8f);
+        Invoke("FailMatchInvoke", 0.5f);
     }
 
     void FailMatchInvoke()
     {
-        namePanel.SetActive(false);
         failTxt.SetActive(false);
-        audioSource.PlayOneShot(failSound);
     }
 
     void SuccessMatch()
     {
-        namePanel.SetActive(true);
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.8f);
+        Invoke("SuccessMatchInvoke", 0.5f);
     }
 
     void SuccessMatchInvoke()
     {
-        namePanel.SetActive(false);
         successTxt.SetActive(false);
     }
 }
