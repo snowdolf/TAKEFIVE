@@ -26,7 +26,7 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stage = GameManager.stage;
+        stage = StageManager.Instance.stage;
 
         if(stage == 1)
         {

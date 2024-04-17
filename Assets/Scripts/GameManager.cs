@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     public int cardCount = 0;
     public int cardNum = 0;
-    public static int stage = 1;
     float time = 0.0f;
     int count = 0;
     int score = 0;

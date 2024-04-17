@@ -7,7 +7,7 @@ public class Stage1Button : MonoBehaviour
 {
     public void Stage1()
     {
-        GameManager.stage = 1;
+        StageManager.Instance.stage = 1;
         SceneManager.LoadScene("MainScene");
     }
 }
