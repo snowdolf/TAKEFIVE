@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         scoreTxt.text = score.ToString() + "Á¡";
 
         board.SetActive(false);
+        namePanel.SetActive(false);
         endPanel.SetActive(true);
     }
 
