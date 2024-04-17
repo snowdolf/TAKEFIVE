@@ -23,10 +23,14 @@ public class Stage2Button : MonoBehaviour
         if (StageManager.Instance.stageUnLocked[2] == true)
         {
             colorBlock.normalColor = Color.white;
+            colorBlock.highlightedColor = Color.white;
+            colorBlock.selectedColor = Color.white;
         }
         else
         {
             colorBlock.normalColor = Color.black;
+            colorBlock.highlightedColor = Color.black;
+            colorBlock.selectedColor = Color.black;
         }
         button.colors = colorBlock;
     }
