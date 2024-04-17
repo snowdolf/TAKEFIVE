@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip failSound;
 
     public int cardCount = 0;
     public int cardNum = 0;
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         namePanel.SetActive(false);
         failTxt.SetActive(false);
+        audioSource.PlayOneShot(failSound);
     }
 
     void SuccessMatch()
