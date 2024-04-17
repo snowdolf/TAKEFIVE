@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Text countTxt;
     public Text scoreTxt;
     public GameObject board;
+    public GameObject namePanel;
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
-
+            
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
             else SuccessMatch();
         }
         else
-        {
+        {            
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
@@ -95,17 +96,20 @@ public class GameManager : MonoBehaviour
 
     void FailMatch()
     {
+        namePanel.SetActive(true);
         failTxt.SetActive(true);
         Invoke("FailMatchInvoke", 0.5f);
     }
 
     void FailMatchInvoke()
     {
+        namePanel.SetActive(false);
         failTxt.SetActive(false);
     }
 
     void SuccessMatch()
     {
+        namePanel.SetActive(true);
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
         Invoke("SuccessMatchInvoke", 0.5f);
@@ -113,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     void SuccessMatchInvoke()
     {
+        namePanel.SetActive(false);
         successTxt.SetActive(false);
     }
 }
