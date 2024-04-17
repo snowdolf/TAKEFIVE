@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         namePanel.SetActive(true);
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.7f);
+        Invoke("FailMatchInvoke", 0.8f);
     }
 
     void FailMatchInvoke()
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         namePanel.SetActive(true);
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.7f);
+        Invoke("SuccessMatchInvoke", 0.8f);
     }
 
     void SuccessMatchInvoke()
