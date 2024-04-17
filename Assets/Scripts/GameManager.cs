@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
 
+
+    // 5초 카운트 변수 저장 및 Text 컴포넌트
+    public GameObject SecondsTxt;
+    public Text secondsTxt;
+    public float AfterSecondsTxt = 5;
+
     public int cardCount = 0;
     public int cardNum = 0;
     float time = 0.0f;
@@ -52,6 +58,24 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
 
         if (time >= 30.0f) EndGame();
+
+
+        //첫번째 카드가 열리면 카운트 Text 출력
+        if (firstCard != null)
+        {
+            SecondsTxt.SetActive(true);
+            AfterSecondsTxt -= Time.deltaTime;
+            secondsTxt.text = AfterSecondsTxt.ToString("N1");
+
+            //첫번째 카드가 열린 후 5초동안 두번째 카드를 선택하지 않으면 첫번째 카드 닫음
+            if(AfterSecondsTxt <= 0)
+            {
+                firstCard.CloseCard();
+                firstCard = null;
+                AfterSecondsTxt = 5;
+                SecondsTxt.SetActive(false);
+            }
+        }
     }
 
     public void Matched()
@@ -77,6 +101,10 @@ public class GameManager : MonoBehaviour
 
         firstCard = null;
         secondCard = null;
+
+        //매치에 성공하거나 실패하면 SecoundsTxt를 닫는다.
+        AfterSecondsTxt = 5;
+        SecondsTxt.SetActive(false);
     }
 
     void EndGame()
