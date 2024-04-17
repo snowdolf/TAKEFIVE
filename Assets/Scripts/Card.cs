@@ -32,23 +32,63 @@ public class Card : MonoBehaviour
     public void Setting(int number, float frontScale)
     {
         idx = number;
-        switch(idx / 2)
+        switch(idx)
         {
             case 0:
-                nickname = "±èµµÇö";
-                break;
-            case 1:
-                nickname = "ÇÑÀçºó";
-                break;
-            case 2:
-                nickname = "ÃÖ¹Î¼®";
-                break;
-            case 3:
                 nickname = "ÀÌ¹Ì¿µ";
                 break;
-            case 4:
+            case 1:
                 nickname = "Ãµ¿ìÇõ";
                 break;
+            case 2:
+                nickname = "Ãµ¿ìÇõ2";
+                break;
+            case 3:
+                nickname = "Ãµ¿ìÇõ3";
+                break;
+            case 4:
+                nickname = "³«Å¸";
+                break;
+            case 5:
+                nickname = "ÇÑÀçºó";
+                break;
+            case 6:
+                nickname = "ÇÑÀçºó2";
+                break;
+            case 7:
+                nickname = "¾Æ¹«°³";
+                break;
+            case 8:
+                nickname = "Á¤Çüµ·";
+                break;
+            case 9:
+                nickname = "±èµµÇö";
+                break;
+            case 10:
+                nickname = "·çÇÇ";
+                break;
+            case 11:
+                nickname = "´ö±¸";
+                break;
+            case 12:
+                nickname = "ÃÖ¹Î¼®";
+                break;
+            case 13:
+                nickname = "²¿ºÎ±â";
+                break;
+            case 14:
+                nickname = "ÃÖ¹Î¼®¾Æ¹ÙÅ¸";
+                break;
+            case 15:
+                nickname = "±èµµÇö";
+                break;
+            case 16:
+                nickname = "ÀÎÇü2";
+                break;
+            case 17:
+                nickname = "±×¸²";
+                break;
+
             default:
                 break;
         }
