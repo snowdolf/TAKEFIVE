@@ -58,8 +58,8 @@ public class Board : MonoBehaviour
         int[] arr = new int[xLength * yLength];
         for(int i = 0; i < arr.Length / 2; i++)
         {
-            arr[2 * i] = i % 8;
-            arr[2 * i + 1] = i % 8;
+            arr[2 * i] = i;
+            arr[2 * i + 1] = i;
         }
 
         arr = arr.OrderBy(x => Random.Range(0, arr.Length)).ToArray();
