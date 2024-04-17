@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip clip1;
 
     public int cardCount = 0;
     public int cardNum = 0;
@@ -73,7 +74,8 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
-        }
+            audioSource.PlayOneShot(clip1); ;
+}
 
         firstCard = null;
         secondCard = null;

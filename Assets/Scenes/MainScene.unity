@@ -1093,6 +1093,7 @@ MonoBehaviour:
   failTxt: {fileID: 1703259047}
   successTxt: {fileID: 1860948211}
   clip: {fileID: 8300000, guid: c8d87733985296b4e89e73d7641ba775, type: 3}
+  clip1: {fileID: 8300000, guid: 8d0901529ba8090439f74b2ef7a0093e, type: 3}
   cardCount: 0
   cardNum: 0
 --- !u!82 &1197392342
