@@ -8,6 +8,8 @@ public class StageManager : MonoBehaviour
 
     public int stage = 1;
 
+    public bool[] stageUnLocked = { true, true, false, false };
+
     private void Awake()
     {
         if (Instance == null)

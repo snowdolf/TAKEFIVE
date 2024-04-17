@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -141,5 +142,8 @@ public class Card : MonoBehaviour
         anim.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);
+
+        var renderer = back.GetComponent<SpriteRenderer>();
+        renderer.color = UnityEngine.Color.gray;
     }
 }
