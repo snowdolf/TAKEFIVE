@@ -53,6 +53,7 @@ public class Board : MonoBehaviour
 
         // 카드 배열 초기화
         int[] arr = new int[xLength * yLength];
+        GameManager.Instance.cards = new Card[xLength * yLength]; 
 
         // 카드 매칭을 위해 숫자 쌍 생성
         for (int i = 0; i < arr.Length / 2; i++)
@@ -79,7 +80,11 @@ public class Board : MonoBehaviour
             GameObject go = Instantiate(card, this.transform);
             go.transform.position = Vector2.zero;
             cards[i] = go;
-            go.GetComponent<Card>().Setting(arr[i], frontScale);
+           //go.GetComponent<Card>().Setting(arr[i], frontScale);
+
+            Card temp = go.GetComponent<Card>();
+            temp.Setting(arr[i], frontScale);
+            GameManager.Instance.cards[i] = temp;
         }
 
         // 일정 시간 동안 카드를 초기 위치에 유지
