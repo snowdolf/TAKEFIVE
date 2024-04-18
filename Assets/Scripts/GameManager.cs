@@ -144,6 +144,8 @@ public class GameManager : MonoBehaviour
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
 
+                wrongCard.backImage.color= Color.gray;
+
                 time += 1.0f;
                 wrong++;
             }
