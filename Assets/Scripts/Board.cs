@@ -56,6 +56,7 @@ public class Board : MonoBehaviour
 
         // arr = {0, 0 , 1, 1, ..., 7, 7, 0, 0, 1, 1, ...}
         int[] arr = new int[xLength * yLength];
+        GameManager.Instance.cards = new Card[xLength * yLength];
         for(int i = 0; i < arr.Length / 2; i++)
         {
             arr[2 * i] = i;
@@ -72,7 +73,11 @@ public class Board : MonoBehaviour
             float y = (i / xLength) * distance + positionY;
 
             go.transform.position = new Vector2(x, y);
-            go.GetComponent<Card>().Setting(arr[i], frontScale);
+
+            //go.GetComponent<Card>().Setting(arr[i], frontScale);      << 아래 두개로 분리
+            Card temp = go.GetComponent<Card>();        // 카드 스크립트 가져오기
+            temp.Setting(arr[i], frontScale);           // 카드 세팅
+            GameManager.Instance.cards[i] = temp;       // 게임매니저의 카드데이터 삽입
         }
 
         GameManager.Instance.cardCount = arr.Length;

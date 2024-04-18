@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     public Animator anim;
 
     public SpriteRenderer frontImage;
+    public SpriteRenderer backImage;
 
     AudioSource audioSource;
     public AudioClip clip;

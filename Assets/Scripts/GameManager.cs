@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public Card firstCard;
     public Card secondCard;
+    public Card wrongCard;
+    public Card[] cards;        // 카드 정보 저장
 
     public Text timeTxt;
     public Text nameTxt;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
     public AudioClip clip1;
 
+    int wrong = 0;
 
     // 5초 카운트 변수 저장 및 Text 컴포넌트
     public GameObject SecondsTxt;
@@ -68,6 +72,19 @@ public class GameManager : MonoBehaviour
             AfterSecondsTxt -= Time.deltaTime;
             secondsTxt.text = AfterSecondsTxt.ToString("N1");
 
+            if (wrong >= 3)
+            {
+                for (int i = 0; i < cards.Length; i++)
+                {
+                    if (cards[i] != firstCard && cards[i].idx == firstCard.idx) 
+                    {
+                        wrongCard = cards[i];
+                        wrongCard.backImage.color = Color.red;
+                    }
+                }
+              
+            }
+
             //첫번째 카드가 열린 후 5초동안 두번째 카드를 선택하지 않으면 첫번째 카드 닫음
             if(AfterSecondsTxt <= 0)
             {
@@ -75,6 +92,8 @@ public class GameManager : MonoBehaviour
                 firstCard = null;
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
+
+                wrong++;
             }
         }
     }
@@ -82,9 +101,15 @@ public class GameManager : MonoBehaviour
     public void Matched()
     {
         count++;
+        if (wrongCard != null)
+        {
+            wrongCard.backImage.color= Color.gray;
+            wrongCard = null;
+        }
 
         if (firstCard.idx == secondCard.idx)
         {
+            wrong = 0;
             audioSource.PlayOneShot(clip);
 
             firstCard.DestroyCard();
@@ -106,7 +131,9 @@ public class GameManager : MonoBehaviour
             secondCard.CloseCard();
             FailMatch();
             audioSource.PlayOneShot(clip1); ;
-}
+
+            wrong++;
+        }
 
         firstCard = null;
         secondCard = null;
