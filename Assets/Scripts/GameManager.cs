@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
 
+                time += 1.0f;
                 wrong++;
             }
         }
@@ -198,6 +199,7 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
+            time += 1.0f;
             wrong++;
         }
 
