@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     public Text countTxt;
     public Text scoreTxt;
     public GameObject board;
-    //public GameObject namePlate_Success; //우혁 : 마지막쯤 메인씬 수정할 때 주석 해제할 부분 namePlate 관련 코드
-    //public GameObject namePlate_Failed; //1000
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1.0f;
@@ -56,13 +55,17 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(false);
     }
 
+    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-
-        if (time >= 30.0f) EndGame();
-
+                
+        if (time >= 40.0f)
+        {
+            timeTxt.color = Color.red;
+        }
+        if (time >= 50.0f) EndGame();
 
         //첫번째 카드가 열리면 카운트 Text 출력
         if (firstCard != null)
@@ -130,10 +133,15 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
+<<<<<<< Updated upstream
             audioSource.PlayOneShot(clip1);
 
             wrong++;
         }
+=======
+            audioSource.PlayOneShot(clip1); ;
+}
+>>>>>>> Stashed changes
 
         firstCard = null;
         secondCard = null;
@@ -159,28 +167,24 @@ public class GameManager : MonoBehaviour
 
     void FailMatch()
     {
-        //namePlate_Failed.SetActive(true); //1000
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.8f);
+        Invoke("FailMatchInvoke", 0.5f);
     }
 
     void FailMatchInvoke()
     {
-        //namePlate_Failed.SetActive(false);  //1000 
         failTxt.SetActive(false);
     }
 
     void SuccessMatch()
     {
-        //namePlate_Success.SetActive(true); //1000
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.8f);
+        Invoke("SuccessMatchInvoke", 0.5f);
     }
 
     void SuccessMatchInvoke()
     {
-        //namePlate_Success.SetActive(false); //1000
         successTxt.SetActive(false);
     }
 }
