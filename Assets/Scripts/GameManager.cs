@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,14 +9,14 @@ public class GameManager : MonoBehaviour
 
     public Card firstCard;
     public Card secondCard;
-    public Card wrongCard;
-    public Card[] cards;        // 카드 정보 저장
 
     public Text timeTxt;
     public Text nameTxt;
     public Text countTxt;
     public Text scoreTxt;
     public GameObject board;
+    //public GameObject namePlate_Success; //우혁 : 마지막쯤 메인씬 수정할 때 주석 해제할 부분 namePlate 관련 코드
+    //public GameObject namePlate_Failed; //1000
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -26,7 +25,6 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
     public AudioClip clip1;
 
-    int wrong = 0;
 
     // 5초 카운트 변수 저장 및 Text 컴포넌트
     public GameObject SecondsTxt;
@@ -47,7 +45,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1.0f;
@@ -56,7 +53,6 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
@@ -72,19 +68,6 @@ public class GameManager : MonoBehaviour
             AfterSecondsTxt -= Time.deltaTime;
             secondsTxt.text = AfterSecondsTxt.ToString("N1");
 
-            if (wrong >= 3)
-            {
-                for (int i = 0; i < cards.Length; i++)
-                {
-                    if (cards[i] != firstCard && cards[i].idx == firstCard.idx) 
-                    {
-                        wrongCard = cards[i];
-                        wrongCard.backImage.color = Color.red;
-                    }
-                }
-              
-            }
-
             //첫번째 카드가 열린 후 5초동안 두번째 카드를 선택하지 않으면 첫번째 카드 닫음
             if(AfterSecondsTxt <= 0)
             {
@@ -92,8 +75,6 @@ public class GameManager : MonoBehaviour
                 firstCard = null;
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
-
-                wrong++;
             }
         }
     }
@@ -101,15 +82,9 @@ public class GameManager : MonoBehaviour
     public void Matched()
     {
         count++;
-        if (wrongCard != null)
-        {
-            wrongCard.backImage.color= Color.gray;
-            wrongCard = null;
-        }
 
         if (firstCard.idx == secondCard.idx)
         {
-            wrong = 0;
             audioSource.PlayOneShot(clip);
 
             firstCard.DestroyCard();
@@ -130,10 +105,8 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
-            audioSource.PlayOneShot(clip1); ;
-
-            wrong++;
-        }
+            audioSource.PlayOneShot(clip1);
+}
 
         firstCard = null;
         secondCard = null;
@@ -159,24 +132,28 @@ public class GameManager : MonoBehaviour
 
     void FailMatch()
     {
+        //namePlate_Failed.SetActive(true); //1000
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.5f);
+        Invoke("FailMatchInvoke", 0.8f);
     }
 
     void FailMatchInvoke()
     {
+        //namePlate_Failed.SetActive(false);  //1000 
         failTxt.SetActive(false);
     }
 
     void SuccessMatch()
     {
+        //namePlate_Success.SetActive(true); //1000
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.5f);
+        Invoke("SuccessMatchInvoke", 0.8f);
     }
 
     void SuccessMatchInvoke()
     {
+        //namePlate_Success.SetActive(false); //1000
         successTxt.SetActive(false);
     }
 }
