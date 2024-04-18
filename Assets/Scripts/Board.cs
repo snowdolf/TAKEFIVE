@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +7,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    GameObject card;
+    public GameObject card;
     public GameObject card1;
     public GameObject card2;
     public GameObject card3;
@@ -51,18 +53,14 @@ public class Board : MonoBehaviour
 
         // 카드 배열 초기화
         int[] arr = new int[xLength * yLength];
-<<<<<<< Updated upstream
-        GameManager.Instance.cards = new Card[xLength * yLength];
-        for(int i = 0; i < arr.Length / 2; i++)
-=======
 
         // 카드 매칭을 위해 숫자 쌍 생성
         for (int i = 0; i < arr.Length / 2; i++)
->>>>>>> Stashed changes
         {
             arr[2 * i] = i;
             arr[2 * i + 1] = i;
         }
+
         // 카드 배열을 무작위로 섞음
         arr = arr.OrderBy(x => Random.Range(0, arr.Length)).ToArray();
 
@@ -75,39 +73,26 @@ public class Board : MonoBehaviour
     {
         GameObject[] cards = new GameObject[arr.Length];
 
-        // 카드 생성 및 초기 위치 지정
+        // 카드 생성과 초기 위치 설정
         for (int i = 0; i < arr.Length; i++)
         {
             GameObject go = Instantiate(card, this.transform);
-<<<<<<< Updated upstream
-
-            float x = (i % xLength) * distance + positionX;
-            float y = (i / xLength) * distance + positionY;
-
-            go.transform.position = new Vector2(x, y);
-
-            //go.GetComponent<Card>().Setting(arr[i], frontScale);      << 아래 두개로 분리
-            Card temp = go.GetComponent<Card>();        // 카드 스크립트 가져오기
-            temp.Setting(arr[i], frontScale);           // 카드 세팅
-            GameManager.Instance.cards[i] = temp;       // 게임매니저의 카드데이터 삽입
-=======
             go.transform.position = Vector2.zero;
             cards[i] = go;
             go.GetComponent<Card>().Setting(arr[i], frontScale);
->>>>>>> Stashed changes
         }
 
         // 일정 시간 동안 카드를 초기 위치에 유지
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(1.0f);
 
-        // 각 카드를 원하는 위치로 점진적으로 이동
+        // 각 카드를 목표 위치로 점진적으로 이동시키는 보간 처리
         for (int i = 0; i < cards.Length; i++)
         {
             float targetX = (i % xLength) * distance + positionX;
             float targetY = (i / xLength) * distance + positionY;
             Vector2 targetPosition = new Vector2(targetX, targetY);
 
-            float duration = 0.05f;  // 카드 이동에 걸리는 시간
+            float duration = 0.1f; // 카드 이동에 걸리는 시간
             float elapsed = 0f;
             Vector2 startPosition = Vector2.zero;
 
@@ -122,6 +107,7 @@ public class Board : MonoBehaviour
             // 마지막 위치로 보정하여 정확하게 배치
             cards[i].transform.position = targetPosition;
         }
+
         // 게임 매니저에 카드 개수 정보 전달
         GameManager.Instance.cardCount = cards.Length;
         GameManager.Instance.cardNum = cards.Length;
