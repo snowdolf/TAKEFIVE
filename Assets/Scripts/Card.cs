@@ -37,34 +37,34 @@ public class Card : MonoBehaviour
         switch(idx)
         {
             case 0:
-                nickname = "ÀÌ¹Ì¿µ";
+                nickname = "¹Ì¿µ";
                 break;
             case 1:
-                nickname = "Ãµ¿ìÇõ";
+                nickname = "¿ìÇõ";
                 break;
             case 2:
-                nickname = "Ãµ¿ìÇõ2";
+                nickname = "¿ìÇõ2";
                 break;
             case 3:
-                nickname = "Ãµ¿ìÇõ3";
+                nickname = "¿ìÇõ3";
                 break;
             case 4:
                 nickname = "³«Å¸";
                 break;
             case 5:
-                nickname = "ÇÑÀçºó";
+                nickname = "Àçºó";
                 break;
             case 6:
-                nickname = "ÇÑÀçºó2";
+                nickname = "Àçºó2";
                 break;
             case 7:
-                nickname = "¾Æ¹«°³";
+                nickname = "´ó´óÀÌ";
                 break;
             case 8:
-                nickname = "Á¤Çüµ·";
+                nickname = "Çüµ·";
                 break;
             case 9:
-                nickname = "±èµµÇö";
+                nickname = "µµÇö";
                 break;
             case 10:
                 nickname = "·çÇÇ";
@@ -73,19 +73,19 @@ public class Card : MonoBehaviour
                 nickname = "´ö±¸";
                 break;
             case 12:
-                nickname = "ÃÖ¹Î¼®";
+                nickname = "¹Î¼®";
                 break;
             case 13:
                 nickname = "²¿ºÎ±â";
                 break;
             case 14:
-                nickname = "ÃÖ¹Î¼®¾Æ¹ÙÅ¸";
+                nickname = "¹Î¼®2";
                 break;
             case 15:
-                nickname = "±èµµÇö";
+                nickname = "µµÇö2";
                 break;
             case 16:
-                nickname = "ÀÎÇü2";
+                nickname = "ÀÎÇü";
                 break;
             case 17:
                 nickname = "±×¸²";
@@ -125,7 +125,7 @@ public class Card : MonoBehaviour
 
     public void DestroyCard()
     {
-        Invoke("DestroyCardInvoke", 0.8f);
+        Invoke("DestroyCardInvoke", 0.7f);
     }
 
     void DestroyCardInvoke()
@@ -135,7 +135,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 0.8f);
+        Invoke("CloseCardInvoke", 0.7f);
     }
 
     void CloseCardInvoke()
