@@ -26,8 +26,17 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        BgmPlay();
+    }
 
+    public void BgmPlay()
+    {
         audioSource.clip = clip;
         audioSource.Play();
+    }
+    public void BgmStop()
+    {
+        audioSource.clip = clip;
+        audioSource.Stop();
     }
 }

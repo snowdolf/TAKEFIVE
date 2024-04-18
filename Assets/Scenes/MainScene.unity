@@ -1703,6 +1703,8 @@ MonoBehaviour:
   successTxt: {fileID: 2114544818}
   clip: {fileID: 8300000, guid: c8d87733985296b4e89e73d7641ba775, type: 3}
   clip1: {fileID: 8300000, guid: d4b06522a42b92e46b0f6cede047e761, type: 3}
+  warningClip: {fileID: 8300000, guid: b950b3fa4440cd744a1c8eb09078d516, type: 3}
+  isWarning: 0
   SecondsTxt: {fileID: 1600700234}
   secondsTxt: {fileID: 1600700235}
   AfterSecondsTxt: 5
