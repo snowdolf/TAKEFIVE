@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     public Text stageTxt; // 스테이지 텍스트
     public Text bestTimeTxt; // 최단 시간 텍스트
     public GameObject board;
-    //public GameObject namePlate_Success; //우혁 : 마지막쯤 메인씬 수정할 때 주석 해제할 부분 namePlate 관련 코드
-    //public GameObject namePlate_Failed; //1000
+    public GameObject namePlate_Success; 
+    public GameObject namePlate_Failed;
     public GameObject endPanel;
     public GameObject failTxt;
     public GameObject successTxt;
@@ -161,8 +161,7 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.idx == secondCard.idx)
         {
-            wrong = 0;
-            audioSource.PlayOneShot(clip);
+            wrong = 0;            
 
             firstCard.DestroyCard();
             secondCard.DestroyCard();
@@ -199,7 +198,6 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             FailMatch();
-            audioSource.PlayOneShot(clip1);
             wrong++;
         }
 
@@ -227,29 +225,31 @@ public class GameManager : MonoBehaviour
 
     void FailMatch()
     {
-        //namePlate_Failed.SetActive(true); //1000
+        namePlate_Failed.SetActive(true);
         failTxt.SetActive(true);
-        Invoke("FailMatchInvoke", 0.8f);
+        Invoke("FailMatchInvoke", 0.7f);
     }
 
     void FailMatchInvoke()
     {
-        //namePlate_Failed.SetActive(false);  //1000 
+        namePlate_Failed.SetActive(false);
         failTxt.SetActive(false);
+        audioSource.PlayOneShot(clip1);
     }
 
     void SuccessMatch()
     {
-        //namePlate_Success.SetActive(true); //1000
+        namePlate_Success.SetActive(true);
         nameTxt.text = firstCard.nickname;
         successTxt.SetActive(true);
-        Invoke("SuccessMatchInvoke", 0.8f);
+        Invoke("SuccessMatchInvoke", 0.7f);
     }
 
     void SuccessMatchInvoke()
-    {
-        //namePlate_Success.SetActive(false); //1000
+    {        
+        namePlate_Success.SetActive(false);
         successTxt.SetActive(false);
+        audioSource.PlayOneShot(clip);
     }
 }
 
