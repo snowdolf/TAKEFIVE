@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
 
-                if (wrongCard.backImage.color == Color.red)
+                if (wrongCard != null && wrongCard.backImage != null && wrongCard.backImage.color == Color.red)
                 {
                     wrongCard.backImage.color = Color.gray;
                 }
@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
 
 
-            //time -= 5.0f;  카드를 매칭하는 경우 시간 감소
+            //time -= 5.0f;  //카드를 매칭하는 경우 시간 감소
 
             if (cardCount == 0)
             {
