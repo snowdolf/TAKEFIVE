@@ -8,6 +8,5 @@ public class StartButton : MonoBehaviour
     public void GameStart()
     {
         SceneManager.LoadScene("StageScene");
-        AudioManager.Instance.BgmPlay();
     }
 }
