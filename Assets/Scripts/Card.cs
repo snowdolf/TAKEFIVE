@@ -104,7 +104,6 @@ public class Card : MonoBehaviour
 
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
-        Invoke("OpenCardInvoke", 0.1f);
 
         if (GameManager.Instance.firstCard == null)
         {
@@ -115,6 +114,8 @@ public class Card : MonoBehaviour
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
+
+        Invoke("OpenCardInvoke", 0.1f);
     }
 
     public void OpenCardInvoke()
