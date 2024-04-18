@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
     public int cardCount = 0;
     public int cardNum = 0;
     float time = 0.0f;
+
+    float warningTime = 20.00f;
+    float endingTime = 30.00f;
+
     int count = 0;
     int score = 0;
 
@@ -74,6 +78,27 @@ public class GameManager : MonoBehaviour
         {
             bestTimeTxt.text = "00.00";
         }
+
+        // 스테이지 별 시간 조정
+        // 1스테이지 경고 = 20초, 끝 = 30초
+        if(StageManager.Instance.stage == 1)
+        {
+            warningTime = 20.00f;
+            endingTime = 30.00f;
+        }
+        // 2스테이지 경고 = 50초, 끝 = 60초
+        else if (StageManager.Instance.stage == 2)
+        {
+            warningTime = 50.00f;
+            endingTime = 60.00f;
+        }
+        // 3스테이지 경고 = 80초, 끝 = 90초
+        else if (StageManager.Instance.stage == 3)
+        {
+            warningTime = 80.00f;
+            endingTime = 90.00f;
+        }
+
     }
 
     void Update()
@@ -81,14 +106,14 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        //if (time >= 30.0f) EndGame();
+        
 
-        if (time >= 40.0f)
+        if (time >= warningTime)
         {
             timeTxt.color = Color.red;
         }
 
-        if (time >= 50.0f) EndGame();
+        if (time >= endingTime) EndGame();
 
 
         //첫번째 카드가 열리면 카운트 Text 출력
@@ -191,7 +216,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
 
         // 점수 = 2 * 맞춘 카드 + 남은 시간 - (매칭 시도한 횟수 / 5)
-        score = 2 * (cardNum - cardCount) + (50 - (int)time) - count / 5;
+        score = 2 * (cardNum - cardCount) + ((int)endingTime - (int)time) - count / 5;
 
         countTxt.text = count.ToString() + "번";
         scoreTxt.text = score.ToString() + "점";
