@@ -115,6 +115,23 @@ public class GameManager : MonoBehaviour
 
         if (time >= endingTime) EndGame();
 
+        // 카드 다 사라지면 끝나게 만들기
+        bool isNoCard = true;
+        foreach (Card card in cards)
+        {
+            if (card != null)
+            {
+                isNoCard = false;
+                break;
+            }
+        }
+        if (isNoCard)
+        {
+            SucessStage();
+
+            EndGame();
+        }
+
 
         //첫번째 카드가 열리면 카운트 Text 출력
         if (firstCard != null)
@@ -180,26 +197,7 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                // 해금할 수 있는 스테이지가 있다면 해금
-                if (StageManager.Instance.stage < 3)
-                {
-                    StageManager.Instance.stageUnLocked[StageManager.Instance.stage + 1] = true;
-                }
-
-                // 최단 기록 갱신
-                string bestTimekey = "BestTime" + StageManager.Instance.stage.ToString();
-                if (PlayerPrefs.HasKey(bestTimekey))
-                {
-                    float best = PlayerPrefs.GetFloat(bestTimekey);
-                    if (best > time)
-                    {
-                        PlayerPrefs.SetFloat(bestTimekey, time);
-                    }
-                }
-                else
-                {
-                    PlayerPrefs.SetFloat(bestTimekey, time);
-                }
+                SucessStage();
 
                 EndGame();
             }
@@ -220,6 +218,30 @@ public class GameManager : MonoBehaviour
         //매치에 성공하거나 실패하면 SecoundsTxt를 닫는다.
         AfterSecondsTxt = 5;
         SecondsTxt.SetActive(false);
+    }
+
+    void SucessStage()
+    {
+        // 해금할 수 있는 스테이지가 있다면 해금
+        if (StageManager.Instance.stage < 3)
+        {
+            StageManager.Instance.stageUnLocked[StageManager.Instance.stage + 1] = true;
+        }
+
+        // 최단 기록 갱신
+        string bestTimekey = "BestTime" + StageManager.Instance.stage.ToString();
+        if (PlayerPrefs.HasKey(bestTimekey))
+        {
+            float best = PlayerPrefs.GetFloat(bestTimekey);
+            if (best > time)
+            {
+                PlayerPrefs.SetFloat(bestTimekey, time);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetFloat(bestTimekey, time);
+        }
     }
 
     void EndGame()
