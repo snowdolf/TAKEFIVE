@@ -181,7 +181,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.228
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -312,6 +312,8 @@ MonoBehaviour:
   card1: {fileID: 5216118631638117923, guid: 359f846cd074c6e4dbd7813415fb6bea, type: 3}
   card2: {fileID: 5216118631638117923, guid: f1ded3dc49d2a5a42a10c45dcc5db3fc, type: 3}
   card3: {fileID: 5216118631638117923, guid: d5eeb3bb8f9a4ea4eb9e4efd4689f533, type: 3}
+  firstCard: {fileID: 0}
+  secondCard: {fileID: 0}
 --- !u!1 &165146982
 GameObject:
   m_ObjectHideFlags: 0
