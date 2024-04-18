@@ -1491,6 +1491,8 @@ MonoBehaviour:
   nameTxt: {fileID: 1860948215}
   countTxt: {fileID: 1729868024}
   scoreTxt: {fileID: 1540627135}
+  stageTxt: {fileID: 902770040}
+  bestTimeTxt: {fileID: 251843743}
   board: {fileID: 83064984}
   endPanel: {fileID: 381144786}
   failTxt: {fileID: 1703259047}
