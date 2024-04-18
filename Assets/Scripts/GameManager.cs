@@ -144,7 +144,11 @@ public class GameManager : MonoBehaviour
                 AfterSecondsTxt = 5;
                 SecondsTxt.SetActive(false);
 
-                wrongCard.backImage.color= Color.gray;
+                if (wrongCard.backImage.color == Color.red)
+                {
+                    wrongCard.backImage.color = Color.gray;
+                }
+
 
                 time += 1.0f;
                 wrong++;
@@ -164,11 +168,16 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.idx == secondCard.idx)
         {
-            wrong = 0;            
+            wrong = 0;
+           
 
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
+
+
+            //time -= 5.0f;  카드를 매칭하는 경우 시간 감소
+
             if (cardCount == 0)
             {
                 // 해금할 수 있는 스테이지가 있다면 해금
