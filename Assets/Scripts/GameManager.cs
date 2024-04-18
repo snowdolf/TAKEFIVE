@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip clip1;
+    public AudioClip warningClip;
+
+    public bool isWarning = false;
 
     int wrong = 0;
 
@@ -110,7 +113,13 @@ public class GameManager : MonoBehaviour
 
         if (time >= warningTime)
         {
+            AudioManager.Instance.BgmStop();
             timeTxt.color = Color.red;
+            if(!isWarning)
+            {
+                audioSource.PlayOneShot(warningClip);
+                isWarning = true;
+            }
         }
 
         if (time >= endingTime) EndGame();
@@ -246,6 +255,8 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
+        audioSource.Stop();
+        isWarning = false;
         Time.timeScale = 0.0f;
 
         // 점수 = 2 * 맞춘 카드 + 남은 시간 - (매칭 시도한 횟수 / 5)
@@ -255,7 +266,7 @@ public class GameManager : MonoBehaviour
         scoreTxt.text = score.ToString() + "점";
 
         board.SetActive(false);
-        endPanel.SetActive(true);
+        endPanel.SetActive(true);        
     }
 
     void FailMatch()
