@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         board.SetActive(true);
         endPanel.SetActive(false);
+        isWarning = false;
 
         // 몇 스테이지 인지 StageTxt에 출력
         stageTxt.text = StageManager.Instance.stage.ToString();
@@ -109,20 +110,17 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        
-
-        if (time >= warningTime)
+        if (time >= endingTime) EndGame();
+        else if (time >= warningTime)
         {
             AudioManager.Instance.BgmStop();
             timeTxt.color = Color.red;
-            if(!isWarning)
+            if (!isWarning)
             {
                 audioSource.PlayOneShot(warningClip);
                 isWarning = true;
             }
         }
-
-        if (time >= endingTime) EndGame();
 
         // 카드 다 사라지면 끝나게 만들기
         bool isNoCard = true;
@@ -256,7 +254,6 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         audioSource.Stop();
-        isWarning = false;
         Time.timeScale = 0.0f;
 
         // 점수 = 2 * 맞춘 카드 + 남은 시간 - (매칭 시도한 횟수 / 5)
